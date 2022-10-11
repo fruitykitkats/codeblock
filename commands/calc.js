@@ -1,8 +1,9 @@
+// Copyright (c) 2018 FruityKitKats. All rights reserved.
+
 const math = require('mathjs'); // `npm i mathjs`
 const Discord = require('discord.js');
 
 exports.run = (client, message, args, tools) => {
-
     if (!args[0]) return message.channel.send('Please input a calculation.');
     let resp;
     try {
@@ -16,8 +17,6 @@ exports.run = (client, message, args, tools) => {
         .setColor(0xffffff)
         .setTitle('Math Calculation')
         .addField('Input', `\`\`\`js\n${args.join('')}\`\`\``)
-        .addField('Output', `\`\`\`js\n${resp}\`\`\``)
-
-    message.channel.send(embed);
-    
-}
+        .addField('Output', `\`\`\`js\n${resp}\`\`\``);
+    return message.channel.send(embed);
+};

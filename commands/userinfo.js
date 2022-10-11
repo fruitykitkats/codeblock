@@ -1,20 +1,18 @@
+// Copyright (c) 2018 FruityKitKats. All rights reserved.
+
 const Discord = require('discord.js'); 
 const moment = require('moment'); // `npm i moment`
 
 // Command Handler
 exports.run = async (client, message, args) => {
-
     let user;
-
     if (message.mentions.users.first()) {
-         user = message.mentions.users.first();
+        user = message.mentions.users.first();
     } else {
-         user = message.author;
-     }
-
-     const member = message.guild.member(user);
-
-     const embed = new Discord.RichEmbed() 
+        user = message.author;
+    }
+    const member = message.guild.member(user);
+    const embed = new Discord.RichEmbed() 
         .setColor('RANDOM') 
         .setThumbnail(user.avatarURL)
         .setTitle(`${user.username}#${user.discriminator}`)
@@ -25,8 +23,6 @@ exports.run = async (client, message, args) => {
         .addField('Status:', `${user.presence.status}`, true)
         .addField('Game:', `${user.presence.game ? user.presence.game.name : 'None'}`, true)
         .addField('Roles:', member.roles.map(roles => `${roles.name}`).join(', '), true)
-        .setFooter(`Replying to ${message.author.username}#${message.author.discriminator}`)
-
-    message.channel.send({embed});
-
-}
+        .setFooter(`Replying to ${message.author.username}#${message.author.discriminator}`);
+    return message.channel.send({embed});
+};

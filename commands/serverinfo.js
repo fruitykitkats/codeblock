@@ -1,3 +1,5 @@
+// Copyright (c) 2018 FruityKitKats. All rights reserved.
+
 const Discord = require('discord.js');
 
 // Command Handler 
@@ -15,6 +17,5 @@ exports.run = async (client, message, args) => {
         .addField('Total Members', message.guild.memberCount);
 
     // Send embed
-    message.channel.send(embed);
-
-} 
+    return message.channel.send(embed);
+};
